@@ -5,8 +5,15 @@
     <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
-    <div id="app">
-      
+    <div id="app" class="app-container">
+      <div class="status-bar">
+      	ChatSocket <span id="username"></span>
+      </div>
+      <div class="message-history"></div>
+      <div class="inputs">
+      	<input type="text" class="input-text" placeholder="Type a message" />
+        <input type="button" class="input-send" value="SEND" />
+      </div>
     </div>
     <script src="bundle.js"></script>
   </body>

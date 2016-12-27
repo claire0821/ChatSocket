@@ -7,9 +7,16 @@ export default class ChatParticipant {
 	{
 		this.chatRoom = null;
 		this.clientConnection = new ClientConnection(connection);
-		this.clientConnection.onReceivePackage(function(type, payload) {
-			this.send({type, payload});
-		});
+		this.clientConnection.onReceivePackage((
+			function(type, payload) {
+				this.send({type, payload});
+			}
+		).bind(this));
+		this.clientConnection.onDisconnect((
+			function() {
+				this.chatRoom.leave(this);
+			}
+		).bind(this));
 	}
 
 	send(message, to)
@@ -19,7 +26,7 @@ export default class ChatParticipant {
 
 	receive(message, from)
 	{
-		this.clientConnection.sendPackage(message);
+		this.clientConnection.sendPackage(message.type, message.payload);
 	}
 
 	getSessionHash()

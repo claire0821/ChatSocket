@@ -1,3 +1,5 @@
+import {actionTypes} from './consts';
+
 export default class ChatRoom {
 
 	constructor() 
@@ -9,7 +11,23 @@ export default class ChatRoom {
 	{
 		this.participants.add(participant);
 		participant.setChatRoom(this);
-		console.log(`Participant ${ participant.getSessionHash() } joined the main chatroom`)
+		this.send({
+			type: actionTypes.SERVER_MESSAGE,
+			payload: `Participant ${ participant.getSessionHash() } has joined`
+		}, participant);
+		this.send({
+			type: actionTypes.UPDATE_USER,
+			payload: {sessionHash: participant.getSessionHash()}
+		}, participant, participant);
+	}
+
+	leave(participant)
+	{
+		this.participants.delete(participant);
+		this.send({
+			type: actionTypes.SERVER_MESSAGE,
+			payload: `Participant ${ participant.getSessionHash() } has left`
+		}, null);
 	}
 
 	send(message, from, to)
@@ -19,24 +37,11 @@ export default class ChatRoom {
 			// message to single participant
 			to.receive(message, from);
 
-		} else 
-		{
+		} else {
 			// broadcast to all participants except self
-			for (participant in this.participants) 
-			{
-				if (participant !== from)
-				{
-					participant.receive(message, from);
-				}
-			}
-		}
-	}
-
-	getParticipantBySessionId(sessionId)
-	{
-		for (participant in this.participants)
-		{
-			if (participant.getSessionId() === sessionId) return participant
+			this.participants.forEach(participant => {
+				if (participant != from) participant.receive(message, from)
+			})
 		}
 	}
 }

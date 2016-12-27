@@ -1,3 +1,58 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700');
+
 body {
-	background: red;
+	margin: 0;
+	background: dodgerblue;
+	font-family: Roboto, sans-serif;
+}
+
+.app-container {
+	display: flex;
+	flex-direction: column;
+	height: calc(100vh - 2em);
+	margin: 1em auto;
+	max-width: 800px;
+	background: white;
+	border-radius: 2pt;
+	box-shadow: 0 0 1em rgba(0,0,0,0.3);
+}
+
+.status-bar {
+	height: 3em;
+	line-height: 3em;
+	padding: 0 2em;
+}
+.status-bar > #username {
+	opacity: 0.3;
+	margin-left: 1em;
+	font-style: italic;
+}
+
+.message-history {
+	flex: 1;
+	padding: 2em;
+	box-shadow: 0 0 1em rgba(0,0,0,0.1) inset;
+}
+
+.inputs {
+	height: 3em;
+	line-height: 3em;
+	padding: 0 2em;
+	display: flex;
+	flex-directoin: row;
+}
+.inputs > input[type='text'] {
+	font-size: 10pt;
+	background: transparent;
+	border: none;
+	flex: 1;
+	outline: 0;
+}
+.inputs > input[type='button'] {
+	font-size: 10pt;
+	color: dodgerblue;
+	background: transparent;
+	border: none;
+	padding: 0 1em;
+	outline: 0;
 }
