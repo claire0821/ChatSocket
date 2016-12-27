@@ -43,8 +43,8 @@ var ChatParticipant = function () {
 			return this.clientConnection.sessionHash;
 		}
 	}, {
-		key: 'setChatMediator',
-		value: function setChatMediator(chatRoom) {
+		key: 'setChatRoom',
+		value: function setChatRoom(chatRoom) {
 			this.chatRoom = chatRoom;
 		}
 	}]);

@@ -20,6 +20,7 @@ var ChatRoom = function () {
 		value: function register(participant) {
 			this.participants.add(participant);
 			participant.setChatRoom(this);
+			console.log("Participant " + participant.getSessionHash() + " joined the main chatroom");
 		}
 	}, {
 		key: "send",

@@ -27,7 +27,7 @@ export default class ChatParticipant {
 		return this.clientConnection.sessionHash
 	}
 
-	setChatMediator(chatRoom)
+	setChatRoom(chatRoom)
 	{
 		this.chatRoom = chatRoom;
 	}

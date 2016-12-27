@@ -5,7 +5,7 @@ export default class ClientConnection {
 	constructor(connection)
 	{
 		this.connection = connection;
-		this.sessionHash = new SessionHashGenerator.generateHash;
+		this.sessionHash = new SessionHashGenerator().generateHash();
 	}
 
 	sendPackage(type, payload)

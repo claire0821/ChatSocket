@@ -19,7 +19,7 @@ var ClientConnection = function () {
 		_classCallCheck(this, ClientConnection);
 
 		this.connection = connection;
-		this.sessionHash = new _SessionHashGenerator2.default.generateHash();
+		this.sessionHash = new _SessionHashGenerator2.default().generateHash();
 	}
 
 	_createClass(ClientConnection, [{

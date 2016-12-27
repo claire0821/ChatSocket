@@ -1,0 +1,1 @@
+const webSocket = new WebSocket(`ws://${location.hostname}:8080`);

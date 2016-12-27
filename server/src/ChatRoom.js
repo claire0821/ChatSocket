@@ -9,6 +9,7 @@ export default class ChatRoom {
 	{
 		this.participants.add(participant);
 		participant.setChatRoom(this);
+		console.log(`Participant ${ participant.getSessionHash() } joined the main chatroom`)
 	}
 
 	send(message, from, to)
