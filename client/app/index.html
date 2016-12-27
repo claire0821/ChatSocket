@@ -6,14 +6,24 @@
   </head>
   <body>
     <div id="app" class="app-container">
+
       <div class="status-bar">
-      	ChatSocket <span id="username"></span>
+      	ChatSocket <span id="username">Others see you as {{ session }}</span>
       </div>
-      <div class="message-history"></div>
+
+      <div class="message-history">
+        <div v-for="chatItem in chatHistory" class="chatitem-container">
+          <span v-if="chatItem.from">sdlfkjsdfkj</span>
+          <span v-bind:class="chatItem.type">{{ chatItem.message }}</span>
+          
+        </div>
+      </div>
+
       <div class="inputs">
-      	<input type="text" class="input-text" placeholder="Type a message" />
-        <input type="button" class="input-send" value="SEND" />
+      	<input type="text" v-model="inputText" class="input-text" placeholder="Type a message" v-on:keyup.enter="sendText" />
+        <input type="button" class="input-send" value="SEND" v-on:click="sendText" />
       </div>
+
     </div>
     <script src="bundle.js"></script>
   </body>

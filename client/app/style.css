@@ -33,6 +33,30 @@ body {
 	padding: 2em;
 	box-shadow: 0 0 1em rgba(0,0,0,0.1) inset;
 }
+.message-history > .chatitem-container {
+	font-size: 10pt;
+	font-weight: 300;
+	display: block;
+	min-height: 2em;
+	margin: 1em 0;
+}
+.chatitem-container .server {
+	display: block;
+	text-align: center;
+	color: #666;
+}
+.chatitem-container .user {
+	background: dodgerblue;
+	color: white;
+	padding: 0.6em 0.8em;
+	border-radius: 5pt;
+}
+.chatitem-container .me {
+	background: lightgrey;
+	padding: 0.6em 0.8em;
+	float: right;
+	border-radius: 5pt;
+}
 
 .inputs {
 	height: 3em;

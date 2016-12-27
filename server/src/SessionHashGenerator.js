@@ -24,6 +24,6 @@ export default class SessionHashGenerator {
 		const incr = this.lastHashIncr;
 		const timeStr = time.toString(16);
 		const incrStr = (incr<16) ? "0"+incr.toString(16) : incr.toString(16);
-		return timeStr + "#" + incrStr;
+		return incrStr + timeStr;
 	}
 }
