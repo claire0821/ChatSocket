@@ -13,7 +13,8 @@
 
       <div class="message-history">
         <div v-for="chatItem in chatHistory" class="chatitem-container">
-          <span v-if="chatItem.message.from">sdlfkjsdfkj</span>
+          <span class="user-identifier" v-if="chatItem.renderHash">{{ chatItem.message.sender.hash }}</span>
+          <span class="user-identifier" v-if="chatItem.renderAlias">{{ chatItem.message.sender.alias }}</span>
           <span v-bind:class="chatItem.type">{{ chatItem.message.text }}</span>
           
         </div>

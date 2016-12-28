@@ -21,7 +21,15 @@ const chat = new Vue({
 
 		addMsgToHistory(message, type)
 		{
-			this.chatHistory.push({message, type});
+			let renderAlias = false, renderHash = false
+			if (message.sender) {
+				renderHash = true;
+				if (message.sender.alias) {
+					renderHash = false;
+					renderAlias = true;
+				}
+			}
+			this.chatHistory.push({message, type, renderHash, renderAlias});
 		},
 
 		sendText()
@@ -51,39 +59,3 @@ const chat = new Vue({
 		}
 	}
 });
-
-// window.onload = function() {
-// 	const conn = new WebSocket(`ws://${location.hostname}:8080`);
-
-// 	conn.addEventListener('open', function() {
-
-// 	});
-
-// 	const textBox = document.querySelector('.input-text');
-
-// 	const sendMessage = function() {
-// 		const message = textBox.value;
-// 		conn.send(JSON.stringify({
-// 			type: 'CHAT_MESSAGE_BROADCAST',
-// 			payload: message
-// 		}))
-// 		textBox.value = '';
-// 	} 
-
-// 	document.querySelector('.input-send').onclick = _ => sendMessage();
-// 	document.querySelector('.input-text').onkeydown = e => {
-// 		if (e.key === 'Enter') sendMessage(); 
-// 	};
-
-// 	conn.addEventListener('message', function(event) {
-// 		console.log('Received message: ', JSON.parse(event.data));
-// 		const serverMessage = JSON.parse(event.data);
-
-// 		switch(serverMessage.type) {
-
-// 			case 'UPDATE_USER':
-// 				document.querySelector('#username').innerText = `Other users see you as ${serverMessage.payload.sessionHash}`
-// 				break;
-// 		}
-// 	});
-// }
