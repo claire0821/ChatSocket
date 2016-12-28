@@ -6,7 +6,8 @@
   "license": "MIT",
   "scripts": {
     "transpile": "babel src -d dist",
-    "start": "node dist/bootstrap.js"
+    "start": "node dist/bootstrap.js",
+    "dev": "yarn run transpile && yarn run start"
   },
   "dependencies": {
     "ws": "^1.1.1"
