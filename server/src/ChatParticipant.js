@@ -59,6 +59,9 @@ export default class ChatParticipant {
 		// notify other users that I joined
 		this.chatRoom.send({type: actionTypes.USER_JOIN, payload: {user: this.getUserInfo()} }, this);
 		// send my client my session info
-		this.chatRoom.send({type: actionTypes.WELCOME, payload: {user: this.getUserInfo()} }, null, this);
+		this.chatRoom.send({type: actionTypes.WELCOME, payload: {
+			user: this.getUserInfo(),
+			users: this.chatRoom.index()
+		} }, null, this);
 	}
 }

@@ -48,6 +48,15 @@ const chat = new Vue({
 			this.connection.send('CLIENT_SET_ALIAS', this.users.get(this.me));
 		},
 
+		showUserList()
+		{
+			alert(
+				this.users.index()
+					.map(user => (user.alias) ? `${user.alias} <${user.hash}>` : user.hash)
+					.join('\n')
+			);
+		},
+
 		onReceive(type, payload)
 		{
 			console.log(type, payload)
@@ -71,7 +80,9 @@ const chat = new Vue({
 					this.addMsgToHistory({text: `${oldName} changed his/her name to ${newName}`}, 'server');
 					break;
 				case 'WELCOME':
-					this.users.store(payload.user);
+					for (let user in payload.users) {
+						this.users.store(payload.users[user]);
+					}
 					this.me = this.users.get(payload.user);
 					break;
 				default:

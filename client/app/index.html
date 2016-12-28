@@ -9,7 +9,7 @@
     <div id="app" class="app-container">
 
       <div class="status-bar">
-      	<span id="title">ChatSocket</span>
+      	<span id="title" v-on:click="showUserList">#general ({{users.count}} online)</span>
         <span id="username">{{ users.get(me).displayName }}</span>
         <button id="button" v-on:click="changeAlias"></button>
       </div>

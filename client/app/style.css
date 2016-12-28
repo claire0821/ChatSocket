@@ -32,6 +32,7 @@ body {
 }
 .status-bar #title {
 	flex: 1;
+	cursor: pointer;
 }
 .status-bar #username {
 	font-size: 9pt;

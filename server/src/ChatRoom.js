@@ -33,4 +33,11 @@ export default class ChatRoom {
 			})
 		}
 	}
+
+	index()
+	{
+		return Array
+			.from(this.participants)
+			.map(participant => participant.getUserInfo());
+	}
 }

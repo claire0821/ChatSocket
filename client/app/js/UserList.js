@@ -8,12 +8,14 @@ export default class UserList {
 			'alias': null,
 			'displayName': 'Unknown'
 		}
+
+		this.count = 0;
 	}
 
 	index()
 	{
 		let userArray = [];
-		for (hash in this.users) {
+		for (let hash in this.users) {
 			if (this.users[hash]) userArray.push(this.users[hash]);
 		}
 		return userArray;
@@ -21,8 +23,9 @@ export default class UserList {
 
 	store(user)
 	{
-		user.displayName = user.alias || user.hash;
+		user.displayName = (user.alias) ? user.alias : user.hash;
 		this.users[user.hash] = user;
+		this.count++;
 	}
 
 	get(user)
@@ -39,11 +42,12 @@ export default class UserList {
 	delete(user)
 	{
 		this.users[user.hash] = null;
+		this.count--;
 	}
 
 	update(user)
 	{
-		user.displayName = user.alias || user.hash;
+		user.displayName = (user.alias) ? user.alias : user.hash;
 		this.users[user.hash] = user;
 	}
 }
