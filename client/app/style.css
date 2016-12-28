@@ -16,18 +16,39 @@ body {
 	border-radius: 2pt;
 	box-shadow: 0 0 1em rgba(0,0,0,0.3);
 }
+@media screen and (max-width: 800px) {
+	.app-container {
+		margin: 0;
+		height: 100vh;
+		border-radius: 0;
+	}
+}
 
 .status-bar {
 	height: 3em;
 	line-height: 3em;
 	padding: 0 2em;
+	display: flex;
 }
-.status-bar > #username {
-	opacity: 0.3;
-	margin-left: 1em;
-	font-style: italic;
+.status-bar #title {
+	flex: 1;
 }
-
+.status-bar #username {
+	font-size: 9pt;
+	font-weight: 300;
+	color: #888;
+}
+.status-bar #button {
+	border: 0;
+	outline: 0;
+	background-color: transparent;
+	background-image: url('assets/pencil-edit-button.svg');
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	margin-left: 0.5em;
+	cursor: pointer;
+}
 .message-history {
 	flex: 1;
 	padding: 2em;

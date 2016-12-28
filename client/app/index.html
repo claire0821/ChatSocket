@@ -2,13 +2,16 @@
 <html>
   <head>
     <title>ChatSocket</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
     <div id="app" class="app-container">
 
       <div class="status-bar">
-      	ChatSocket <span id="username">Others see you as {{ session }}</span>
+      	<span id="title">ChatSocket</span>
+        <span id="username">{{ session }}</span>
+        <button id="button"></button>
       </div>
 
       <div class="message-history">
