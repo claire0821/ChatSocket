@@ -10,6 +10,7 @@ export default class ClientConnection {
 
 	sendPackage(type, payload)
 	{
+		console.log(type, payload);
 		const msg = JSON.stringify({type, payload});
 		console.log('sending message to ', this.sessionHash, msg);
 		this.connection.send(msg);

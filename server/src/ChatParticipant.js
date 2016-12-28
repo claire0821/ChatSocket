@@ -24,7 +24,7 @@ export default class ChatParticipant {
 		this.chatRoom.send(message, this, to);
 	}
 
-	receive(message, from)
+	receive(message)
 	{
 		this.clientConnection.sendPackage(message.type, message.payload);
 	}

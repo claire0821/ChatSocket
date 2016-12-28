@@ -19,15 +19,15 @@ const chat = new Vue({
 
 	methods: {
 
-		addMsgToHistory(message, type, from)
+		addMsgToHistory(message, type)
 		{
-			this.chatHistory.push({message, type, from});
+			this.chatHistory.push({message, type});
 		},
 
 		sendText()
 		{
-			this.connection.send('CHAT_MESSAGE_BROADCAST', this.inputText);
-			this.addMsgToHistory(this.inputText, 'me')
+			this.connection.send('CHAT_MESSAGE_BROADCAST', {text: this.inputText});
+			this.addMsgToHistory({text: this.inputText}, 'me')
 			this.inputText = '';
 		},
 

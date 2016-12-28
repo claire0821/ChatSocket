@@ -13,8 +13,8 @@ export default class ChatRoom {
 		participant.setChatRoom(this);
 		this.send({
 			type: actionTypes.SERVER_MESSAGE,
-			payload: `Participant ${ participant.getSessionHash() } has joined`
-		}, participant);
+			payload: {text: `Participant ${ participant.getSessionHash() } has joined`}
+		}, null);
 		this.send({
 			type: actionTypes.UPDATE_USER,
 			payload: {sessionHash: participant.getSessionHash()}
@@ -26,21 +26,28 @@ export default class ChatRoom {
 		this.participants.delete(participant);
 		this.send({
 			type: actionTypes.SERVER_MESSAGE,
-			payload: `Participant ${ participant.getSessionHash() } has left`
+			payload: {text: `Participant ${ participant.getSessionHash() } has left`}
 		}, null);
 	}
 
 	send(message, from, to)
 	{
+		if (from) 
+		{
+			message.payload.sender = {
+				"hash": from.getSessionHash(),
+				"alias": null
+			}
+		}
 		if (to) 
 		{
 			// message to single participant
-			to.receive(message, from);
+			to.receive(message);
 
 		} else {
 			// broadcast to all participants except self
 			this.participants.forEach(participant => {
-				if (participant != from) participant.receive(message, from)
+				if (participant != from) participant.receive(message)
 			})
 		}
 	}
