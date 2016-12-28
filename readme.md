@@ -4,8 +4,8 @@
 
 Functionality milestones:
 
-* ~Chat functionality~
-* ~Logging capability~
+* ~~Chat functionality~~
+* ~~Logging capability~~
 * Custon client names
 * Responsive Web design
 * Online user list
