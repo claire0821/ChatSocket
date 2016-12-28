@@ -53,6 +53,7 @@ body {
 	flex: 1;
 	padding: 2em;
 	box-shadow: 0 0 1em rgba(0,0,0,0.1) inset;
+	overflow-x: scroll;
 }
 .message-history > .chatitem-container {
 	font-size: 10pt;

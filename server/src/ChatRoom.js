@@ -11,34 +11,16 @@ export default class ChatRoom {
 	{
 		this.participants.add(participant);
 		participant.setChatRoom(this);
-		this.send({
-			type: actionTypes.SERVER_MESSAGE,
-			payload: {text: `Participant ${ participant.getSessionHash() } has joined`}
-		}, null);
-		this.send({
-			type: actionTypes.UPDATE_USER,
-			payload: {sessionHash: participant.getSessionHash()}
-		}, participant, participant);
 	}
 
 	leave(participant)
 	{
 		this.participants.delete(participant);
-		this.send({
-			type: actionTypes.SERVER_MESSAGE,
-			payload: {text: `Participant ${ participant.getSessionHash() } has left`}
-		}, null);
 	}
 
 	send(message, from, to)
 	{
-		if (from) 
-		{
-			message.payload.sender = {
-				"hash": from.getSessionHash(),
-				"alias": null
-			}
-		}
+		if (from) message.payload.sender = from.getUserInfo()
 		if (to) 
 		{
 			// message to single participant

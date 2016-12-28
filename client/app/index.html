@@ -10,14 +10,13 @@
 
       <div class="status-bar">
       	<span id="title">ChatSocket</span>
-        <span id="username">{{ session }}</span>
-        <button id="button"></button>
+        <span id="username">{{ users.get(me).displayName }}</span>
+        <button id="button" v-on:click="changeAlias"></button>
       </div>
 
       <div class="message-history">
         <div v-for="chatItem in chatHistory" class="chatitem-container">
-          <span class="user-identifier" v-if="chatItem.renderHash">{{ chatItem.message.sender.hash }}</span>
-          <span class="user-identifier" v-if="chatItem.renderAlias">{{ chatItem.message.sender.alias }}</span>
+          <span class="user-identifier" v-if="chatItem.type=='user'">{{ chatItem.message.user.displayName }}</span>
           <span v-bind:class="chatItem.type">{{ chatItem.message.text }}</span>
           
         </div>
