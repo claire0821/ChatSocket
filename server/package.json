@@ -10,7 +10,7 @@
     "dev": "yarn run transpile && yarn run start"
   },
   "dependencies": {
-    "ws": "^1.1.1"
+    "ws": "^3.3.1"
   },
   "devDependencies": {
     "babel-cli": "^6.18.0",
